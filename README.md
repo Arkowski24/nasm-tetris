@@ -5,7 +5,7 @@ Unofficial Tetris clone for DOS, written purely in NASM Assembly.
 ![Game Screenshot](http://i.imgur.com/IrWaM49.png)
 
 ## Run Instruction
-The game is a single .exe file, available in /bin subdirectory.
+The game is a single .exe file, available in [bin](/bin) subdirectory.
 
 1. Download and install [DOSBox](https://www.dosbox.com/).
 2. Mount project directory.

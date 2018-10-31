@@ -34,24 +34,24 @@ segment data
     	scoreString: db "SCORE" 	
 segment text
 ..start:
-        ;Inicjalizacja
+        ;Initialization
         mov AX, data 
         mov DS, AX  
         mov AX, stack 
         mov SS, AX 
         mov SP, stacktop
         
-        ;Zapisywanie aktualnego trybu wyswietlania
+        ;Saving current video mode
         mov AX, 0x0F00
         int 0x10
         mov word[videoMode], AX        
 
-        ;Przelaczenie na tryb graficzny - 320x200 256
+        ;Switch to  graphics mode - 320x200 256
         xor AX, AX
         mov AL, 0x13
         int 0x10
         
-        ;Dodanie offsetu do karto graficznej do ES
+        ;Adding offset to the video card to ES
         mov AX, 0xA000 ; The offset to video memory
 	    mov ES, AX ; We load it to ES through AX, becouse immediate operation is not allowed on ES
         
@@ -64,12 +64,12 @@ endOfGame:
         call displayGameOver
         call delayForLongWhile
         
-        ;Powrot do poprzedniego trybu wyswietlania
+        ;Return to previous video mode
         mov AX, word[videoMode]  
         xor AH, AH
         int 0x10
         
-        ;Koniec programu
+        ;Finish program
         mov AX, 0x4C00 
         int 0x21  
         
